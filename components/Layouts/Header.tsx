@@ -6,6 +6,8 @@ import { IRootState } from '../../store';
 import { toggleLocale, toggleTheme,toggleSidebar, toggleRTL  } from '../../store/themeConfigSlice';
 import { useTranslation } from 'react-i18next';
 import Dropdown from '../Dropdown';
+import Logo from "../../public/assets/images/stj/logo.png"
+
 
 const Header = () => {
     const router = useRouter();
@@ -128,8 +130,7 @@ const Header = () => {
                 <div className="relative flex w-full items-center bg-white px-5 py-2.5 dark:bg-black">
                     <div className="horizontal-logo flex items-center justify-between ltr:mr-2 rtl:ml-2 lg:hidden">
                         <Link href="/" className="main-logo flex shrink-0 items-center">
-                            <img className="inline w-8 ltr:-ml-1 rtl:-mr-1" src="/assets/images/logo.svg" alt="logo" />
-                            <span className="hidden align-middle text-2xl  font-semibold  transition-all duration-300 ltr:ml-1.5 rtl:mr-1.5 dark:text-white-light md:inline">VRISTO</span>
+                            <img className="inline w-8 ltr:-ml-1 rtl:-mr-1" src={Logo.src} alt="logo" />
                         </Link>
                         <button
                             type="button"
