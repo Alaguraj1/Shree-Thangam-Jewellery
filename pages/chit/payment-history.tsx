@@ -61,13 +61,13 @@ const PaymentHistory = () => {
     ];
 
     return (
-        <div className="closedDue">
-            <div className="closedDue-title-outer">
-                <h2 className="closed-due-title">Your Transactions</h2>
+        <div className="payment-history-container">
+            <div className="payment-history-header">
+                <h3 className="payment-history-title">Your Transactions</h3>
             </div>
 
-            <div style={{ padding: '20px 0px' }}>
-                <Table dataSource={state.dataSource} columns={columns} pagination={false} style={{ width: '100%' }} />
+            <div>
+                <Table dataSource={state.dataSource} columns={columns} pagination={true} style={{ width: '100%' }} />
             </div>
         </div>
     );

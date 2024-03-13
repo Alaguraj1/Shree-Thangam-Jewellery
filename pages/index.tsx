@@ -21,7 +21,15 @@ function Index() {
         date: dayjs().format('MM-YYYY'),
         isModalOpen: false,
         calendarOpen: false,
+        userName: '',
     });
+
+
+useEffect(() => {
+   const user  = localStorage.getItem('userName'); 
+setState({userName: user});
+},[])
+
 
     useEffect(() => {
         const Token = localStorage.getItem('token');
@@ -98,11 +106,12 @@ function Index() {
     }
 
     return (
-        <div className="imagePosition">
+        <div className="home-container">
             <div>
-                <h3 className="chit-details-title">Hi Welcome To Sree Thangam Jewellery</h3>
-
-                <div className="home-container">
+                <div className='home-heading'>
+                    <h3 className="home-title">Hi {state?.userName}, Welcome To Sree Thangam Jewellery</h3>
+                </div>
+                <div className="home-main">
                     <div className="home-left">
                         <div className="priceDetails">
                             {/* <CalendarFilled className="calendor" onClick={showModal} /> */}

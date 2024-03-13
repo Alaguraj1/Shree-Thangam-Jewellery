@@ -18,6 +18,89 @@
         @apply bg-[#060818];
     }
 
+
+    /* index.css */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+/*  */
+
+
+h1{
+    font-size: 40px;
+    font-weight: 800 ;
+    line-height: 44px;
+}
+
+h2{
+    font-size: 36px;
+    font-weight: 700 ;
+    line-height: 40px;
+}
+
+h3{
+    font-size: 32px;
+    font-weight: 700 ;
+    line-height: 36px;
+}
+
+h4{
+    font-size: 28px;
+    font-weight: 600 ;
+    line-height: 32px;
+}
+
+h5{
+    font-size: 24px;
+    font-weight: 600 ;
+    line-height: 38px;
+}
+
+h6{
+    font-size: 20px;
+    font-weight: 600 ;
+    line-height: 34px;
+}
+
+
+@media(max-width:768px){
+    h3{
+        font-size: 26px;
+        line-height: 30px;
+    }
+    h4{
+        font-size: 22px;
+        line-height: 26px;
+    }
+}
+
+
+
+p{
+    font-size: 16px;
+}
+
+li{
+    font-size: 16px;
+}
+
+marquee{
+    font-size: 16px;
+}
+
+
+
     /* Panel */
     .panel {
         @apply relative rounded-md bg-white p-5 shadow dark:bg-black;
@@ -662,20 +745,7 @@ pre.hljs {
 
 /* stj */
 
-/* index.css */
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+
 
   /* App.css */
   .App {
@@ -731,37 +801,45 @@ secondary color : #9a2526, red
 
 }
 
-.home-container {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+.home-container{
+    padding: 30px 0px 0px 100px;
 }
 
-.product-price-scroll {
-    white-space: nowrap;
-    overflow: hidden;
-    animation: marquee 20s linear infinite;
-  }
-  
-  @keyframes marquee {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-  }
+.home-heading{
+    padding-bottom: 60px;
+}
+
+.home-title {
+    color: #9a2526;
+   
+}
+
+
+.home-main{
+    display: flex;
+    justify-content: space-between;
+    /* position: relative; */
+}
+
+.priceDetails{
+margin-bottom: 50px;
+}
+
+
 
 .home-side-img {
     position: absolute;
     right: 0px;
-    width: 50%;
+    bottom: 0px;
   }
 
 .home-left {
-    padding-top: 50px;
     width: 50%;
 }
 
 .priceDetails {
     background: #9a2526;
-    padding: 5px 10px 5px 10px;
+    padding: 10px 10px 10px 10px;
     border-radius: 4px;
     display: flex;
 }
@@ -773,19 +851,15 @@ secondary color : #9a2526, red
 
 .product-price {
     color: #f7cd5b;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .chit-details-title {
     display: flex;
     justify-content: space-between;
-
 }
 
-.product-price {
-    color: #f7cd5b;
-    font-weight: 500;
-}
+
 
 .home-payDue {
     display: flex;
@@ -800,12 +874,10 @@ secondary color : #9a2526, red
     margin-left: 10px;
 }
 
-.discount-outer {
-    margin: 30px 0px;
-}
+
 
 .home-subTitle {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     color: #9a2526;
 }
 
@@ -923,9 +995,17 @@ secondary color : #9a2526, red
  display: block;
 } */
 
+@media(max-width: 1440px) {
+    .home-side-img {
+      width: 35%;
+      }
+}
+
 @media(max-width:1040px) {
 
-
+    .home-container {
+        padding: 30px 0px 0px 0px;
+    }
 
     .home-right {
         display: none;
@@ -933,28 +1013,32 @@ secondary color : #9a2526, red
 
     .home-left {
         width: 100%;
-        padding: 70px 0px 20px 0px;
     }
 }
 
 
 @media(max-width: 1024px) {
-  
+    .home-heading{
+        padding-bottom: 40px;
+    }
+    .priceDetails {
+        margin-bottom: 30px;
+    }
 
     .home-left {
         width: 100%;
-        padding: 20px 0px 20px 0px;
     }
 }
 
-@media(max-width:500px) {
 
-
-    .discount-outer {
-        margin: 30px 0px 0px 0px;
+@media(max-width:500px){
+    .home-container {
+        padding: 0px;
+    }
+    .home-heading{
+        padding-bottom: 30px;
     }
 }
-
 
 @media(max-width:425px) {
     .gold-low {
@@ -1424,7 +1508,7 @@ secondary color : #9a2526, red
 
 .chit-details-title {
     color: #9a2526;
-    margin-bottom: 20px;
+   
 }
 
 .chit-details-subTitle {
@@ -2306,3 +2390,31 @@ display: none  ;
 
   /* live server end */
 
+
+
+
+  /* payment history.css */
+
+  .payment-history-container{
+    padding: 30px 100px 0px 100px;
+  }
+
+  .payment-history-header{
+    padding-bottom: 30px;
+  }
+
+  .payment-history-title{
+    color: #9a2526;
+}
+
+@media(max-width:1040px){
+    .payment-history-container{
+        padding: 30px 0px 0px 0px;
+      }
+}
+
+@media(max-width:500px){
+    .payment-history-container{
+        padding:  0px;
+      }
+}
