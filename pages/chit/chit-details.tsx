@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Tooltip } from 'antd';
+import { Table, Tooltip, message } from 'antd';
 import { Select, Modal } from 'antd';
 import Models from '../../imports/models.import';
 import { useSetState } from '../../utils/function.utils';
@@ -10,6 +10,7 @@ const ChitDetails = () => {
     //   const Router.push = useRouter.push();
     const Router: any = useRouter();
     const { Option } = Select;
+    const [messageApi, contextHolder] = message.useMessage();
 
     const [state, setState] = useSetState({
         selectedBranch: null,
@@ -252,7 +253,10 @@ const ChitDetails = () => {
         let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 
         if (totalAmount == undefined || totalAmount == null || totalAmount == '' || totalAmount == 0) {
-            alert('Please Select Chit');
+            messageApi.open({
+                type: 'error',
+                content: 'Select Chit Amount',
+            });
         } else {
             router.push(URL);
         }
@@ -261,6 +265,7 @@ const ChitDetails = () => {
     return (
         <div>
             <div className="closedDue">
+                {contextHolder}
                 <div className="closedDue-title-outer">
                     <h2 className="closed-due-title">Current Chit Details</h2>
                 </div>

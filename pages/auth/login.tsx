@@ -51,6 +51,7 @@ const login = () => {
     };
     return (
         <div className="container-login">
+            {contextHolder}
             <div className="login-left">
                 <h1 className="login-title">WELCOME</h1>
                 <p className="login-subTitle">User Login</p>
