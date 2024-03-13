@@ -251,7 +251,7 @@ function Signup() {
                         </Form>
                         <p>
                             Already user ?{' '}
-                            <Link href="/login" style={{ textDecoration: 'underline' }}>
+                            <Link href="/auth/login" style={{ textDecoration: 'underline' }}>
                                 Login
                             </Link>
                         </p>
