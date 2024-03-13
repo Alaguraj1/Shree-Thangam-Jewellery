@@ -4,7 +4,7 @@ import { Select, Modal } from 'antd';
 import Models from '../../imports/models.import';
 import { useSetState } from '../../utils/function.utils';
 import { useRouter } from 'next/router';
-import CCAvenue from "../../utils/ccavenue.utils";
+import CCAvenue from '../../utils/ccavenue.utils';
 
 const ChitDetails = () => {
     //   const Router.push = useRouter.push();
@@ -221,24 +221,22 @@ const ChitDetails = () => {
     //     } catch (error) {}
     // };
 
-
-
-    const host = "https://schemes.sreethangamjewellery.com";
+    const host = 'https://schemes.sreethangamjewellery.com';
     const router = useRouter();
 
     const handlepayduePay = () => {
         let paymentData = {
             merchant_id: '315511', // Merchant ID (Required)
-            order_id: "ORD123", // Order ID - It can be generated from our project
-            amount:totalAmount, // Payment Amount (Required)
-            currency: "INR", // Payment Currency Type (Required)
-            billing_email: "raj@gmail.com", // Billing Email (Optional)
-            billing_name: "Raj", // Billing Name (Optional)
-            billing_address: "Hops", // Billing Address (Optional)
-            billing_city: "Covai", // Billing City (Optional)
-            billing_state: "Tamilnadu", // Billing State (Optional)
-            billing_zip: "380002", // Billing Zip (Optional)
-            billing_country: "India", // Billing COuntry (Optional)
+            order_id: 'ORD123', // Order ID - It can be generated from our project
+            amount: totalAmount, // Payment Amount (Required)
+            currency: 'INR', // Payment Currency Type (Required)
+            billing_email: 'raj@gmail.com', // Billing Email (Optional)
+            billing_name: 'Raj', // Billing Name (Optional)
+            billing_address: 'Hops', // Billing Address (Optional)
+            billing_city: 'Covai', // Billing City (Optional)
+            billing_state: 'Tamilnadu', // Billing State (Optional)
+            billing_zip: '380002', // Billing Zip (Optional)
+            billing_country: 'India', // Billing COuntry (Optional)
             redirect_url: `http://shopat.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
             cancel_url: `https://schemes.sreethangamjewellery.com/`, // Failed/Cancel Payment URL (Required)
             // merchant_param1: "Extra Information", // Extra Information (Optional)
@@ -247,13 +245,18 @@ const ChitDetails = () => {
             // merchant_param4: "Extra Information", // Extra Information (Optional)
             // language: 'EN', // Language (Optional)
             // billing_tel: "1234567890" // Billing Mobile Number (Optional)
-        }
+        };
 
         let encReq = CCAvenue.getEncryptedOrder(paymentData);
-        let accessCode = "AVEV05LC59AW38VEWA";
+        let accessCode = 'AVEV05LC59AW38VEWA';
         let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
-        router.push(URL);
-    }
+
+        if (totalAmount == undefined || totalAmount == null || totalAmount == '' || totalAmount == 0) {
+            alert('Please Select Chit');
+        } else {
+            router.push(URL);
+        }
+    };
 
     return (
         <div>
@@ -266,13 +269,13 @@ const ChitDetails = () => {
                     <p style={{ paddingRight: '20px' }}>Select Branch and Chit to Pay</p>
                     <Select
                         showSearch
-                        filterOption={(input:any, option:any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                        filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                         style={{ width: 200 }}
                         onChange={payDueChange}
                         placeholder="Select Branch"
                         value={state?.branch?.[0]?.BRNCODE}
                     >
-                        {state?.branch?.map((val:any) => (
+                        {state?.branch?.map((val: any) => (
                             <Option key={val?.BRNCODE} value={val?.BRNCODE}>
                                 {val?.NICADDR}
                             </Option>
@@ -296,7 +299,7 @@ const ChitDetails = () => {
                         // })}
                         components={{
                             body: {
-                                row: ({ className, ...restProps }:any) => {
+                                row: ({ className, ...restProps }: any) => {
                                     return (
                                         <>
                                             <tr className={`${className} `} {...restProps} />
@@ -308,7 +311,7 @@ const ChitDetails = () => {
                     />
                 </div>
                 <div className="closedDue-pay-outer">
-                    <button  className="closedDue-pay" onClick={handlepayduePay}>
+                    <button className="closedDue-pay" onClick={handlepayduePay}>
                         PAY
                     </button>
                 </div>
@@ -323,13 +326,13 @@ const ChitDetails = () => {
                         <p style={{ paddingRight: '20px' }}>Select branch and view Completed Chit</p>
                         <Select
                             showSearch
-                            filterOption={(input:any, option:any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                            filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                             style={{ width: 200 }}
                             onChange={handleBranchChange}
                             placeholder="Select Branch"
                             value={state?.branch?.[0]?.BRNCODE}
                         >
-                            {state?.branch?.map((val:any) => (
+                            {state?.branch?.map((val: any) => (
                                 <Option key={val?.BRNCODE} value={val?.BRNCODE}>
                                     {val?.NICADDR}
                                 </Option>
@@ -351,7 +354,7 @@ const ChitDetails = () => {
                             // }}
                             components={{
                                 body: {
-                                    row: ({ className, ...restProps }:any) => {
+                                    row: ({ className, ...restProps }: any) => {
                                         return (
                                             <>
                                                 {/* <Tooltip title="Click Here" mouseEnterDelay={0.5}> */}
