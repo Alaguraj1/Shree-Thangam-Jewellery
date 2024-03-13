@@ -1294,9 +1294,9 @@ const Header = () => {
                             <li>
                                 <Link href="/widgets">{t('widgets')}</Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="https://vristo.sbthemes.com" target="_blank">{t('documentation')}</Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </li>
                 </ul>
