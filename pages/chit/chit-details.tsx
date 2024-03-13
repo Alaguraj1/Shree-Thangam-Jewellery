@@ -223,30 +223,30 @@ const ChitDetails = () => {
 
 
 
-    const host = "http://localhost:3000";
+    const host = "https://schemes.sreethangamjewellery.com";
     const router = useRouter();
 
     const handlepayduePay = () => {
         let paymentData = {
             merchant_id: '315511', // Merchant ID (Required)
             order_id: "ORD123", // Order ID - It can be generated from our project
-            amount: "1", // Payment Amount (Required)
+            amount:totalAmount, // Payment Amount (Required)
             currency: "INR", // Payment Currency Type (Required)
-            billing_email: "johndoe@gmail.com", // Billing Email (Optional)
-            billing_name: "John Doe", // Billing Name (Optional)
-            billing_address: "Address Details", // Billing Address (Optional)
-            billing_city: "Ahmedabad", // Billing City (Optional)
-            billing_state: "Gujarat", // Billing State (Optional)
+            billing_email: "raj@gmail.com", // Billing Email (Optional)
+            billing_name: "Raj", // Billing Name (Optional)
+            billing_address: "Hops", // Billing Address (Optional)
+            billing_city: "Covai", // Billing City (Optional)
+            billing_state: "Tamilnadu", // Billing State (Optional)
             billing_zip: "380002", // Billing Zip (Optional)
             billing_country: "India", // Billing COuntry (Optional)
-            redirect_url: `${host}/api/ccavenue-handle`, // Success URL (Required)
-            cancel_url: `${host}/api/ccavenue-handle`, // Failed/Cancel Payment URL (Required)
-            merchant_param1: "Extra Information", // Extra Information (Optional)
-            merchant_param2: "Extra Information", // Extra Information (Optional)
-            merchant_param3: "Extra Information", // Extra Information (Optional)
-            merchant_param4: "Extra Information", // Extra Information (Optional)
-            language: 'EN', // Language (Optional)
-            billing_tel: "1234567890" // Billing Mobile Number (Optional)
+            redirect_url: `http://shopat.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
+            cancel_url: `https://schemes.sreethangamjewellery.com/`, // Failed/Cancel Payment URL (Required)
+            // merchant_param1: "Extra Information", // Extra Information (Optional)
+            // merchant_param2: "Extra Information", // Extra Information (Optional)
+            // merchant_param3: "Extra Information", // Extra Information (Optional)
+            // merchant_param4: "Extra Information", // Extra Information (Optional)
+            // language: 'EN', // Language (Optional)
+            // billing_tel: "1234567890" // Billing Mobile Number (Optional)
         }
 
         let encReq = CCAvenue.getEncryptedOrder(paymentData);
