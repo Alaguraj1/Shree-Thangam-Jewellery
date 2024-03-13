@@ -27,7 +27,7 @@ const PaymentHistory = () => {
             if (res?.results[0].Success === 1) {
                 setState({ dataSource: res.results[0]?.Message });
             } else {
-                Router.push('/login');
+                Router.push('/auth/login');
             }
 
             if (res.results[0].Message == 'Authentication Session Failed') {

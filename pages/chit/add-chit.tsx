@@ -6,6 +6,8 @@ import { columns } from '../../utils/constants.utils';
 import { useSetState } from '../../utils/function.utils';
 import Models from '../../imports/models.import';
 import NewChitImage from "../../public/assets/images/stj/newChit.png"
+import SwarnaLakshitha from "../../public/assets/images/stj/terms_swarna-laksita.png"
+import GoldVikasham from "../../public/assets/images/stj/terms-goldvirksham.png"
 
 
 const { Option } = Select;
@@ -454,13 +456,13 @@ const ChitDetails = () => {
                 {state.selectedChit == 4 ? (
                     <>
                         <div style={{ marginTop: '30px' }}>
-                            <img src="assets/img/terms_swarna-laksita.png" />
+                            <img src={SwarnaLakshitha.src} />
                         </div>
                     </>
                 ) : (
                     <>
                         <div style={{ marginTop: '30px' }}>
-                            <img src="assets/img/terms-goldvirksham.png" />
+                            <img src={GoldVikasham.src} />
                         </div>
                     </>
                 )}

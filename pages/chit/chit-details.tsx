@@ -261,7 +261,7 @@ const ChitDetails = () => {
                         // })}
                         components={{
                             body: {
-                                row: ({ className, ...restProps }) => {
+                                row: ({ className, ...restProps }:any) => {
                                     return (
                                         <>
                                             <tr className={`${className} `} {...restProps} />
@@ -316,7 +316,7 @@ const ChitDetails = () => {
                             // }}
                             components={{
                                 body: {
-                                    row: ({ className, ...restProps }) => {
+                                    row: ({ className, ...restProps }:any) => {
                                         return (
                                             <>
                                                 {/* <Tooltip title="Click Here" mouseEnterDelay={0.5}> */}
