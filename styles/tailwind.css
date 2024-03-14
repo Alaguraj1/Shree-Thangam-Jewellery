@@ -1614,6 +1614,7 @@ margin: 20px 0px 10px 0px;
 .PayDueLineShow{
     display: flex;
     padding-bottom: 10px;
+    margin-right: 10px;
 }
 .getPayDueDetails{
 font-weight: bold;
@@ -2058,6 +2059,12 @@ color: white;
     color: white;
 }
 
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-modal .ant-modal-close {
+    top: 5px;
+    width: 30px;
+    height: 30px;
+}
+
 /* local server end */
 
 
@@ -2189,4 +2196,9 @@ color: white;
     color: white;
 }
 
-/* local server end */
+:where(.css-1ae8k9u).ant-modal .ant-modal-close {
+    top: 5px;
+    width: 30px;
+    height: 30px;
+}
+/* live server end */

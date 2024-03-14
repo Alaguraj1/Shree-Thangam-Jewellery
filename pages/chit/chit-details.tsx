@@ -173,7 +173,7 @@ const ChitDetails = () => {
             key: 'details',
             render: (text: any, record: any) => (
                 <button className="view" onClick={() => handlePayDueRowClick(record)}>
-                    view
+                    View
                 </button>
             ),
         },
@@ -202,7 +202,7 @@ const ChitDetails = () => {
             key: 'details',
             render: (text: any, record: any) => (
                 <button className="view" onClick={() => handleRowClick(record)}>
-                    view
+                    View
                 </button>
             ),
         },
@@ -382,7 +382,7 @@ const ChitDetails = () => {
                     <>
                         <div>
                             <div className="PayDueShowHeading">
-                                <h6>Chit Name : {state?.selectedPayDueShowData?.CHTNAME}</h6>
+                                <h6 style={{ color: '#9a2526' }}>Chit Name : {state?.selectedPayDueShowData?.CHTNAME}</h6>
                             </div>
                             <div
                                 style={{
