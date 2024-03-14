@@ -211,7 +211,7 @@ const ChitDetails = () => {
                 <div className='add-chit-main'>
                     <div>
                         <div>
-                            <h6 className="chit-details-subTitle">Personal Details</h6>
+                            <h6 className="chit-details-subTitle" style={{color: "#a84647", fontWeight:"700"}}>Personal Details</h6>
                             <Form
                                 name="basic"
                                 form={form}
@@ -317,7 +317,7 @@ const ChitDetails = () => {
                                     <Input type="number" className="chit-input-style" />
                                 </Form.Item>
 
-                                <h6 className="chit-details-subTitle" style={{marginTop:" 50px"}}>Chit</h6>
+                                <h6 className="chit-details-subTitle" style={{marginTop:" 50px", color: "#a84647", fontWeight:"700"}}>Chit</h6>
                                 <Form.Item label="Select Branch" name="branch" className="add-chit-inputs">
                                     <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleBranchChange}>
                                         {state?.branch[0]?.Message?.map((val: any) => (
