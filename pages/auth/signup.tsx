@@ -216,7 +216,7 @@ function Signup() {
                                     },
                                 ]}
                             >
-                                <div className="login-input-wrapper password-sec">
+                                <div className="login-input-warrper password-sec">
                                     <UnlockOutlined className="login-input-icon" />
                                     <Input type={passwordVisible ? 'text' : 'password'} className="login-input-style" />
                                     {passwordVisible ? (

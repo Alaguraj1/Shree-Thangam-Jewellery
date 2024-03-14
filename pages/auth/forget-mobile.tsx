@@ -37,7 +37,7 @@ const ForgetPassword = ({ setStep, setMobileNumber }:any) => {
     return (
         <>
             {contextHolder}
-            <div className="container-forget">
+            <div className="container-login">
                 <div className="forget-left">
                     <h1 className="forget-title">WELCOME</h1>
                     <p className="forget-subTitle">Forget Password</p>
@@ -75,10 +75,10 @@ const ForgetPassword = ({ setStep, setMobileNumber }:any) => {
 
                             <Form.Item style={{ textAlign: 'end' }}>
                                 <Space>
-                                    <Button size="large" style={{ background: '#9a2526', fontWeight: '600' }} onClick={handleGoBack}>
+                                    <Button size="large" type="primary" style={{ background: '#9a2526', fontWeight: '600' }} onClick={handleGoBack}>
                                         Cancel
                                     </Button>
-                                    <Button type="primary" htmlType="submit" size="large" style={{ background: '#9a2526' }}>
+                                    <Button type="primary" htmlType="submit" size="large" style={{ background: '#9a2526',fontWeight: '600' }}>
                                         Generate OTP
                                     </Button>
                                 </Space>
@@ -88,7 +88,7 @@ const ForgetPassword = ({ setStep, setMobileNumber }:any) => {
                 </div>
 
                 <div className="forget-outer">
-                    <img src={ForgetPasswordImage.src} alt="background-image" className="forget-side-img" />
+                    <img src={ForgetPasswordImage.src} alt="background-image" className="login-side-img" />
                 </div>
             </div>
         </>

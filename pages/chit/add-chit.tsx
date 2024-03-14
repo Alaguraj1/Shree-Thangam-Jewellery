@@ -5,10 +5,9 @@ import { useRouter } from 'next/router';
 import { columns } from '../../utils/constants.utils';
 import { useSetState } from '../../utils/function.utils';
 import Models from '../../imports/models.import';
-import NewChitImage from "../../public/assets/images/stj/newChit.png"
-import SwarnaLakshitha from "../../public/assets/images/stj/terms_swarna-laksita.png"
-import GoldVikasham from "../../public/assets/images/stj/terms-goldvirksham.png"
-
+import NewChitImage from '../../public/assets/images/stj/newChit.png';
+import SwarnaLakshitha from '../../public/assets/images/stj/terms_swarna-laksita.png';
+import GoldVikasham from '../../public/assets/images/stj/terms-goldvirksham.png';
 
 const { Option } = Select;
 
@@ -208,9 +207,9 @@ const ChitDetails = () => {
     return (
         <>
             {contextHolder}
-            <div className="chit-container">
-                <div className="details container-chit-details flex w-full items-center">
-                    <div className="left chit-details-left w-1/2">
+            <div className="add-chit-container">
+                <div style={{ display: 'flex' }}>
+                    <div>
                         <div>
                             <h6 className="chit-details-subTitle">Personal Details</h6>
                             <Form
@@ -234,9 +233,7 @@ const ChitDetails = () => {
                                         },
                                     ]}
                                 >
-                                    <div className="chit_inputs name-input">
-                                        <Input style={{ padding: '10px 5px !important' }} />
-                                    </div>
+                                    <Input className="chit-input-style" />
                                 </Form.Item>
 
                                 <Form.Item
@@ -250,9 +247,7 @@ const ChitDetails = () => {
                                         },
                                     ]}
                                 >
-                                    <div className="chit_inputs address-input">
-                                        <Input />
-                                    </div>
+                                    <Input className="chit-input-style" />
                                 </Form.Item>
 
                                 <Form.Item
@@ -266,9 +261,7 @@ const ChitDetails = () => {
                                         },
                                     ]}
                                 >
-                                    <div className="chit_inputs landmark-input">
-                                        <Input />
-                                    </div>
+                                    <Input className="chit-input-style" />
                                 </Form.Item>
 
                                 <Form.Item
@@ -283,9 +276,7 @@ const ChitDetails = () => {
                                         },
                                     ]}
                                 >
-                                    <div className="chit_inputs email-input">
-                                        <Input type="email" />
-                                    </div>
+                                    <Input type="email" className="chit-input-style" />
                                 </Form.Item>
 
                                 <Form.Item
@@ -299,21 +290,17 @@ const ChitDetails = () => {
                                         },
                                     ]}
                                 >
-                                    <div className="chit_inputs mobile-input">
-                                        <Input prefix={state.localCode} disabled />
-                                    </div>
+                                    <Input prefix={state.localCode} disabled className="chit-input-style" />
                                 </Form.Item>
 
                                 <Form.Item label="Select City" name="city" className="add-chit-inputs">
-                                    <div className="chit_inputs city-input">
-                                        <Select showSearch filterOption={(input:any, option:any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleCityChange}>
-                                            {state?.city?.map((val:any) => (
-                                                <Option key={val?.CITYCODE} value={val?.CITYCODE}>
-                                                    {val?.CITYNAME}
-                                                </Option>
-                                            ))}
-                                        </Select>
-                                    </div>
+                                    <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleCityChange}>
+                                        {state?.city?.map((val: any) => (
+                                            <Option key={val?.CITYCODE} value={val?.CITYCODE}>
+                                                {val?.CITYNAME}
+                                            </Option>
+                                        ))}
+                                    </Select>
                                 </Form.Item>
 
                                 <Form.Item
@@ -327,56 +314,48 @@ const ChitDetails = () => {
                                         },
                                     ]}
                                 >
-                                    <div className="chit_inputs pincode-input">
-                                        <Input type="number" />
-                                    </div>
+                                    <Input type="number" className="chit-input-style" />
                                 </Form.Item>
 
                                 <h6 className="chit-details-subTitle">Chit</h6>
                                 <Form.Item label="Select Branch" name="branch" className="add-chit-inputs">
-                                    <div className="chit_inputs branch-input">
-                                        <Select showSearch filterOption={(input:any, option:any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleBranchChange}>
-                                            {state?.branch[0]?.Message?.map((val:any) => (
-                                                <Option key={val?.BRNCODE} value={val?.BRNCODE}>
-                                                    {val?.NICADDR}
-                                                </Option>
-                                            ))}
-                                        </Select>
-                                    </div>
+                                    <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleBranchChange}>
+                                        {state?.branch[0]?.Message?.map((val: any) => (
+                                            <Option key={val?.BRNCODE} value={val?.BRNCODE}>
+                                                {val?.NICADDR}
+                                            </Option>
+                                        ))}
+                                    </Select>
                                 </Form.Item>
 
                                 <Form.Item label="Chit Name" name="chit_name" className="add-chit-inputs">
-                                    <div className="chit_inputs chit-input">
-                                        <Select onChange={handleChitChange} showSearch filterOption={(input:any, option:any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                                            {state?.chit?.map((val:any) => (
-                                                <Option key={val?.CHTCODE} value={val?.CHTCODE}>
-                                                    {val?.CHTNAME}
-                                                </Option>
-                                            ))}
-                                        </Select>
-                                    </div>
+                                    <Select onChange={handleChitChange} className="add-chit-inputs" showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}  >
+                                        {state?.chit?.map((val: any) => (
+                                            <Option key={val?.CHTCODE} value={val?.CHTCODE}>
+                                                {val?.CHTNAME}
+                                            </Option>
+                                        ))}
+                                    </Select>
                                 </Form.Item>
 
                                 <Form.Item label="Amount" name="amount" className="add-chit-inputs">
-                                    <div className="chit_inputs amount-input">
-                                        {state?.selectedChit == 6 ? (
-                                            <>
-                                                <Input type="number" />
-                                                <p>Min amount is Rs 50,000/-</p>
-                                            </>
-                                        ) : (
-                                            <>
-                                                {' '}
-                                                <Select onChange={handleAmountChange} showSearch filterOption={(input:any, option:any) => option.children.indexOf(input) >= 0}>
-                                                    {state?.getChit?.map((val:any) => (
-                                                        <Option key={val?.CHTAMNT} value={val?.CHTAMNT}>
-                                                            {val?.CHTAMNT}
-                                                        </Option>
-                                                    ))}
-                                                </Select>{' '}
-                                            </>
-                                        )}
-                                    </div>
+                                    {state?.selectedChit == 6 ? (
+                                        <>
+                                            <Input type="number" />
+                                            <p>Min amount is Rs 50,000/-</p>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {' '}
+                                            <Select onChange={handleAmountChange} showSearch filterOption={(input: any, option: any) => option.children.indexOf(input) >= 0}>
+                                                {state?.getChit?.map((val: any) => (
+                                                    <Option key={val?.CHTAMNT} value={val?.CHTAMNT}>
+                                                        {val?.CHTAMNT}
+                                                    </Option>
+                                                ))}
+                                            </Select>{' '}
+                                        </>
+                                    )}
                                 </Form.Item>
 
                                 {/* <p style={{ fontSize: "14px" }}>
@@ -405,15 +384,13 @@ const ChitDetails = () => {
                                     labelCol={{ span: 14 }}
                                     wrapperCol={{ span: 18 }}
                                 >
-                                    <div className="chit_inputs refer-input">
-                                        <Select showSearch filterOption={(input:any, option:any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-                                            {state?.ReferenseUser?.map((val:any) => (
-                                                <Option key={val?.EMPCODE} value={val?.EMPCODE}>
-                                                    {val?.EMPCODE} - {val?.EMPNAME}
-                                                </Option>
-                                            ))}
-                                        </Select>
-                                    </div>
+                                    <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+                                        {state?.ReferenseUser?.map((val: any) => (
+                                            <Option key={val?.EMPCODE} value={val?.EMPCODE}>
+                                                {val?.EMPCODE} - {val?.EMPNAME}
+                                            </Option>
+                                        ))}
+                                    </Select>
                                 </Form.Item>
 
                                 <Form.Item>
@@ -438,7 +415,7 @@ const ChitDetails = () => {
                             </Form>
                         </div>
                     </div>
-                    <div className="right pl-[50px] chit-details-image-cover w-1/2">
+                    <div className="right chit-details-image-cover w-1/2 pl-[50px]">
                         <img src={NewChitImage.src} alt="new-chit-image" className="new-chit-image" />
                     </div>
                 </div>

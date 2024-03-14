@@ -787,6 +787,11 @@ pre.hljs {
     }
   }
 
+
+  /* inputs */
+
+  
+
   
   /* home.css */
 
@@ -1089,6 +1094,27 @@ margin-bottom: 50px;
     background: none;
     border: none !important;
   }
+
+  .chit-input-style {
+    background: none !important;
+    /* border-bottom: 1px solid #9e9e9e !important; */
+    border: none;
+    border-bottom: 1px solid #9a2526;
+    border-radius: 0px;
+  
+  }
+
+  
+  .chit-input-style:hover {
+    border-bottom: 1px solid #9a2526;
+  }
+
+  .chit-input-style:focus {
+    border-bottom: 1px solid #9a2526;
+  }
+  .chit-input-style:active {
+    border-bottom: 1px solid #9a2526;
+  }
   
   .eyeIcon {
     position: absolute;
@@ -1141,11 +1167,10 @@ margin-bottom: 50px;
   }
   
   .container-signup {
-    
-   position: relative;
-    display: flex;
+        display: flex;
     align-items: center !important;
-    height: 100vh;
+    height: 85vh;
+    padding: 0px 0px 0px 100px;
   }
   
   .signup-left {
@@ -1171,6 +1196,9 @@ margin-bottom: 50px;
   .login-input-warrper input[type="text"] {
     padding-left: 35px !important;
   }
+  .login-input-warrper input[type="password"] {
+    padding-left: 35px !important;
+  }
   
   .login-input-warrper input[type="text"] .login-input-style:hover {
     border-color: none !important;
@@ -1187,6 +1215,7 @@ margin-bottom: 50px;
     top: 15px;
     left: 10px;
     color: #9a2526;
+    bottom: 15px;
   }
   
   .login-input-style {
@@ -1213,37 +1242,35 @@ margin-bottom: 50px;
   }
   
   
-  @media (min-height: 670px) {
+  /* @media (min-height: 670px) {
     .container-signup {
       height: 100vh;
     }
-  }
+  } */
   
   
   
-  @media(min-width:1440){
+  @media(max-width:1440px){
     .container-signup{
-      height: 100vh !important;
+        display: flex;
+        align-items: center !important;
+        margin: 30px 0px 30px 0px;
     }
   }
   
   @media(max-width:1040px) {
   
     .container-signup {
+        padding: 0px;
       display: flex;
       align-items: center !important;
-      height: auto;
       justify-content: center;
     }
     
     .signup-left {
       width: 400px;
-      padding: 70px 0px 20px 0px;
     }
-  
-    .signup-title{
-      margin-top: 20px;
-    }
+
   
     .signup-outer {
       display: none;
@@ -1261,7 +1288,6 @@ margin-bottom: 50px;
   
     .signup-left {
       width: 100%;
-      padding: 70px 0px 20px 0px;
     }
   }
   
@@ -1299,14 +1325,14 @@ margin-bottom: 50px;
     margin-bottom: 25px;
 }
 
-.select-option-outer {
+.chit-details-select-option-outer {
     display: flex;
     margin-bottom: 25px;
 }
 
 
 .new-chit-image{
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     right: 0px;
     width: 40%;
@@ -1513,7 +1539,7 @@ margin-bottom: 50px;
 } */
 
 .closedDue-title-outer{
-    padding: 50px 0px 20px 0px;
+    padding: 0px 0px 20px 0px;
 
 }
 
@@ -1545,7 +1571,7 @@ margin-bottom: 50px;
     background-color: #a84647;
 }
 
-.closed-due-title{
+.chit-details-title{
     color: #9a2526;
     font-size: 25px;
 }
@@ -1577,7 +1603,7 @@ font-weight: bold;
     } */
 
     .closedDue-title-outer {
-        padding: 70px 0px 20px 0px;
+        padding: 0px 0px 20px 0px;
 
     }
 
@@ -1591,11 +1617,12 @@ font-weight: bold;
     .closedDue{
         padding: 0px 20px;    
     } */
-    .select-option-outer{
+    .chit-details-select-option-outer{
         display:block ;
+        margin-bottom: 0px;
     }
     .closedDue-title-outer {
-        padding: 70px 0px 10px 0px;
+        padding: 0px 0px 10px 0px;
 
     }
 }
@@ -1689,6 +1716,10 @@ font-weight: bold;
   .forget-input-warrper input[type="text"] {
     padding-left: 35px !important;
   }
+
+  .forget-input-warrper input[type="password"] {
+    padding-left: 35px !important;
+  }
   
   .forget-input-warrper input[type="text"] .login-input-style:hover {
     border-color: none !important;
@@ -1698,6 +1729,7 @@ font-weight: bold;
   
   .forget-input-warrper input[type="tel"] {
     padding-left: 5px !important;
+    border-radius: 0px;
   }
   
   
@@ -1705,6 +1737,7 @@ font-weight: bold;
     background: none !important;
     border-bottom: 1px solid #9e9e9e !important;
     border: none;
+    border-radius: 0px;
   
   }
   
@@ -1715,7 +1748,7 @@ font-weight: bold;
   
   .forget-input-style:active {
     background: none;
-  border: none !important;
+  border-left: none !important;
   }
   
   .forget-input-style:focus {
@@ -1781,3 +1814,67 @@ font-weight: bold;
 }
 
 
+
+
+/* chit details */
+
+.chit-details-container{
+    padding: 0px 100px 0px 100px;
+}
+
+.chit-details-title-outer{
+    padding: 0px 0px 20px 0px;
+}
+
+.chit-details-select-branch{
+    padding-right: 20px;
+}
+
+@media(max-width:1024px){
+    .chit-details-container{
+        padding: 0px 0px 0px 0px;
+      }
+}
+
+@media(max-width:500px){
+    .chit-details-title-outer{
+        padding: 0px 0px 10px 0px;
+    }
+    .chit-details-select-branch{
+        padding-bottom: 10px;
+    }
+}
+
+
+
+/* add-chit */
+
+.add-chit-container{
+    padding: 30px 0px 0px 100px;
+}
+
+
+/* antd */
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+    border: none;
+}
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+    border-bottom: 1px solid #a84647;
+    background: none;
+    border-radius: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector{
+    border-bottom : 1px solid #a84647;
+}
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):focus .ant-select-selector{
+    border-bottom : 1px solid #a84647;
+}
+
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-select-outlined:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):active .ant-select-selector{
+    border-bottom : 1px solid #a84647;
+}

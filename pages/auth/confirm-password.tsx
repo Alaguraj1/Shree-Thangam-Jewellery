@@ -54,7 +54,7 @@ const ForgetOtp = ({ setStep, mobileNumber }:any) => {
     return (
         <>
             {contextHolder}
-            <div className="container-forget">
+            <div className="container-login">
                 <div className="forget-left">
                     <h1 className="forget-title">WELCOME</h1>
                     <p className="forget-subTitle">Confirm Password</p>
@@ -133,7 +133,7 @@ const ForgetOtp = ({ setStep, mobileNumber }:any) => {
                 </div>
 
                 <div className="forget-outer">
-                    <img src={ForgetPasswordImage.src} alt="background-image" className="forget-side-img" />
+                    <img src={ForgetPasswordImage.src} alt="background-image" className="login-side-img" />
                 </div>
             </div>
         </>

@@ -263,15 +263,15 @@ const ChitDetails = () => {
     };
 
     return (
-        <div>
-            <div className="closedDue">
+        <div  className="chit-details-container">
+            <div>
                 {contextHolder}
-                <div className="closedDue-title-outer">
-                    <h2 className="closed-due-title">Current Chit Details</h2>
+                <div className="chit-details-title-outer">
+                    <h2 className="chit-details-title">Current Chit Details</h2>
                 </div>
 
-                <div className="select-option-outer">
-                    <p style={{ paddingRight: '20px' }}>Select Branch and Chit to Pay</p>
+                <div className="chit-details-select-option-outer">
+                    <p className='chit-details-select-branch' style={{ paddingRight: '20px' }}>Select Branch and Chit to Pay</p>
                     <Select
                         showSearch
                         filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
@@ -322,13 +322,13 @@ const ChitDetails = () => {
                 </div>
             </div>
 
-            <div className="closedDue-containerfluid">
-                <div className="closed-container">
-                    <div className="completed-title-outer">
+            <div>
+                <div>
+                    <div className="chit-details-title-outer">
                         <h2 className="completed-due-title">Closed Chit Details</h2>
                     </div>
-                    <div className="select-option-outer">
-                        <p style={{ paddingRight: '20px' }}>Select branch and view Completed Chit</p>
+                    <div className="chit-details-select-option-outer">
+                        <p className='chit-details-select-branch' style={{ paddingRight: '20px' }}>Select branch and view Completed Chit</p>
                         <Select
                             showSearch
                             filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
