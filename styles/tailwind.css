@@ -1196,7 +1196,8 @@ margin-bottom: 50px;
  
   
   .signup-title {
-    color: #9a2526
+    color: #9a2526;
+    padding-bottom: 20px;
   }
   
   .login-subTitle {
@@ -1718,7 +1719,9 @@ font-weight: bold;
   
   
   .forget-title{
-    color: #9a2526
+    color: #9a2526;
+    padding-bottom:20px
+
   }
   
   .forget-subTitle{

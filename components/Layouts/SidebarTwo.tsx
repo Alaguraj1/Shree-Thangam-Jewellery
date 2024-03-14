@@ -14,7 +14,7 @@ import TwitterImage from '../../public/assets/images/stj/twitter.svg';
 
 import { Modal } from 'antd';
 
-const Sidebar = () => {
+const SidebarTwo = () => {
     const router = useRouter();
     const [currentMenu, setCurrentMenu] = useState<string>('');
     const [errorSubMenu, setErrorSubMenu] = useState(false);
@@ -114,28 +114,7 @@ const Sidebar = () => {
                     </div>
 
                     <PerfectScrollbar className="relative " style={{ height: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-                        <ul className="relative space-y-0.5 p-4 py-0 font-semibold">
-                            <li className="nav-item">
-                                <ul>
-                                    <li className={`mb-3 ${isActive('/') ? 'active' : ''}`}>
-                                        <Link href="/">Home</Link>
-                                    </li>
-                                    <li className={`mb-3  ${isActive('/chit/add-chit') ? 'active' : ''}`}>
-                                        <Link href="/chit/add-chit">Add Chit</Link>
-                                    </li>
-                                    <li className={`mb-3  ${isActive('/chit/chit-details') ? 'active' : ''}`}>
-                                        <Link href="/chit/chit-details">Chit Details</Link>
-                                    </li>
-                                    <li className={`mb-3  ${isActive('/chit/payment-history') ? 'active' : ''}`}>
-                                        <Link href="/chit/payment-history">Payment History</Link>
-                                    </li>
-
-                                    <li className="mb-3 " onClick={showConfirm}>
-                                        <Link href="">Logout</Link>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        
                     </PerfectScrollbar>
                     <div className="socialmedia-outer">
                         <div className="social float-left mb-[5px] w-full">
@@ -173,4 +152,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default SidebarTwo;

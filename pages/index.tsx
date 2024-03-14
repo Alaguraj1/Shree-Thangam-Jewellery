@@ -143,7 +143,7 @@ setState({userName: user});
 
                         <div className="discount-outer">
                             <h4 className="home-subTitle">Our Scheme</h4>
-                            <Link href="/add-chit">
+                            <Link href="/chit/add-chit">
                                 <img src="assets/images/stj/scheme.jpg" alt="Discound" style={{ width: '100% !important' }} />
                             </Link>
                         </div>

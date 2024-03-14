@@ -118,7 +118,7 @@ const login = () => {
                                 <Checkbox>Remember me</Checkbox>
                             </Form.Item>
                             <p style={{ textDecoration: 'underline' }}>
-                                <Link href="/auth/forget-password">Forget Password</Link>
+                                <Link href="/auth/forget-password">Forgot Password</Link>
                             </p>
                         </div>
                         <Form.Item>

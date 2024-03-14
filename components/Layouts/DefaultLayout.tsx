@@ -9,6 +9,8 @@ import Sidebar from './Sidebar';
 import Setting from './Setting';
 import Portals from '../../components/Portals';
 import { useRouter } from 'next/router';
+import { isNull } from 'lodash';
+import SidebarTwo from './SidebarTwo';
 
 const DefaultLayout = ({ children }: PropsWithChildren) => {
     const router = useRouter();
@@ -17,6 +19,14 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);
     const [animation, setAnimation] = useState(themeConfig.animation);
     const dispatch = useDispatch();
+    const [token, setToken] = useState(null);
+
+
+useEffect(() => {
+    const Token:any = localStorage.getItem('token');
+    setToken(Token);
+})
+
 
     const goToTop = () => {
         document.body.scrollTop = 0;
@@ -102,7 +112,13 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
                 {/* END APP SETTING LAUNCHER */}
                 <div className={`${themeConfig.navbar} main-container min-h-screen text-black dark:text-white-dark`}>
                     {/* BEGIN SIDEBAR */}
-                    <Sidebar />
+
+{
+    token == null ? <SidebarTwo /> : <Sidebar/>
+}
+
+
+                    {/* <Sidebar /> */}
                     {/* END SIDEBAR */}
                     <div className="main-content flex flex-col min-h-screen">
                         {/* BEGIN TOP NAVBAR */}

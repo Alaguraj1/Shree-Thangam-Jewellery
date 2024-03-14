@@ -40,7 +40,7 @@ const ForgetPassword = ({ setStep, setMobileNumber }:any) => {
             <div className="container-login">
                 <div className="forget-left">
                     <h1 className="forget-title">WELCOME</h1>
-                    <p className="forget-subTitle">Forget Password</p>
+                    <p className="forget-subTitle">Forgot Password</p>
                     <div style={{ marginTop: '30px' }}>
                         <Form
                             name="forget-form"
