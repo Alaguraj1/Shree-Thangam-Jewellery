@@ -45,34 +45,37 @@ h1{
 
 h2{
     font-size: 36px;
-    font-weight: 700 ;
+    font-weight: 800 ;
     line-height: 40px;
 }
 
 h3{
     font-size: 32px;
-    font-weight: 700 ;
+    font-weight: 800 ;
     line-height: 36px;
 }
 
 h4{
     font-size: 28px;
-    font-weight: 600 ;
+    font-weight: 800 ;
     line-height: 32px;
 }
 
 h5{
     font-size: 24px;
-    font-weight: 600 ;
+    font-weight: 800 ;
     line-height: 38px;
 }
 
 h6{
     font-size: 20px;
-    font-weight: 600 ;
+    font-weight: 800 ;
     line-height: 34px;
 }
 
+div{
+    font-size: 16px;
+}
 
 @media(max-width:768px){
     h3{
