@@ -126,7 +126,7 @@ const SidebarTwo = () => {
                                 </li>
 
                                 <li className="social-icons">
-                                    <a className="text-[#333]" target="_blank" href="https://www.instagram.com/sree_thangam_jewellery/">
+                                    <a className="text-[#333]" target="_blank" href="https://twitter.com/sree_thangam">
                                         <img className="svg" src={TwitterImage.src} alt="image" style={{ width: '20px' }} />
                                     </a>
                                 </li>
