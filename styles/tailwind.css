@@ -1934,7 +1934,10 @@ font-weight: bold;
 /* local server start */
 
 :where(.css-dev-only-do-not-override-1ae8k9u).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
-    border: none;
+    border-bottom: 1px solid #a84647;
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 :where(.css-dev-only-do-not-override-1ae8k9u).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
@@ -2065,13 +2068,20 @@ color: white;
     height: 30px;
 }
 
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-table-wrapper .ant-table-tbody .ant-table-row.ant-table-row-selected >.ant-table-cell{
+    background: #ffe6e6;
+}
+
 /* local server end */
 
 
 /* live server start */
 
 :where(.css-1ae8k9u).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
-    border: none;
+    border-bottom: 1px solid #a84647;
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 :where(.css-1ae8k9u).ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
@@ -2200,5 +2210,9 @@ color: white;
     top: 5px;
     width: 30px;
     height: 30px;
+}
+
+:where(.css-1ae8k9u).ant-table-wrapper .ant-table-tbody .ant-table-row.ant-table-row-selected >.ant-table-cell{
+    background: #ffe6e6;
 }
 /* live server end */
