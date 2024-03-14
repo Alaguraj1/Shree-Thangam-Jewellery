@@ -208,7 +208,7 @@ const ChitDetails = () => {
         <>
             {contextHolder}
             <div className="add-chit-container">
-                <div style={{ display: 'flex' }}>
+                <div className='add-chit-main'>
                     <div>
                         <div>
                             <h6 className="chit-details-subTitle">Personal Details</h6>
@@ -317,7 +317,7 @@ const ChitDetails = () => {
                                     <Input type="number" className="chit-input-style" />
                                 </Form.Item>
 
-                                <h6 className="chit-details-subTitle">Chit</h6>
+                                <h6 className="chit-details-subTitle" style={{marginTop:" 50px"}}>Chit</h6>
                                 <Form.Item label="Select Branch" name="branch" className="add-chit-inputs">
                                     <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleBranchChange}>
                                         {state?.branch[0]?.Message?.map((val: any) => (
@@ -424,9 +424,9 @@ const ChitDetails = () => {
             {/* terms and conditions */}
             <Modal
                 visible={state.isModalVisible}
-                // onOk={handleModalAccept}
-                // okText="Accept"
-                // onCancel={handleModalCancel}
+                onOk={handleModalAccept}
+                okText="Accept"
+                onCancel={handleModalCancel}
                 width={700}
                 footer={false}
             >

@@ -7,10 +7,12 @@ import AnimateHeight from 'react-animate-height';
 import { IRootState } from '../../store';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Logo from "../../public/assets/images/stj/logo.png"
+import Logo from '../../public/assets/images/stj/logo.png';
+import FacebookImage from '../../public/assets/images/stj/facebook.svg';
+import InstagramImage from '../../public/assets/images/stj/instagram.svg';
+import TwitterImage from '../../public/assets/images/stj/twitter.svg';
 
-
-import { Modal } from "antd";
+import { Modal } from 'antd';
 
 const Sidebar = () => {
     const router = useRouter();
@@ -61,132 +63,112 @@ const Sidebar = () => {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
+    const [menu, setMenu] = useState(false);
+    const [menuStatus, setMenuStatus] = useState('');
+    const [mobileMenuStatus, setMobileMenuStatus] = useState('');
 
-    
-  const [menu, setMenu] = useState(false);
-  const [menuStatus, setMenuStatus] = useState("");
-  const [mobileMenuStatus, setMobileMenuStatus] = useState("");
- 
-const isActive = (path:any) => {
-    return router.pathname === path;
-  };
+    const isActive = (path: any) => {
+        return router.pathname === path;
+    };
 
-
-  function menuopenclose() {
-    if (menu) {
-      setMenu(false);
-      setMenuStatus("");
-      setMobileMenuStatus("");
-    } else {
-      setMenu(true);
-      setMenuStatus("is-active");
-      setMobileMenuStatus("opened");
+    function menuopenclose() {
+        if (menu) {
+            setMenu(false);
+            setMenuStatus('');
+            setMobileMenuStatus('');
+        } else {
+            setMenu(true);
+            setMenuStatus('is-active');
+            setMobileMenuStatus('opened');
+        }
     }
-  }
 
-  const { confirm } = Modal;
+    const { confirm } = Modal;
 
-  const showConfirm = () => {
-    confirm({
-      title: "Logout",
-      content: "Do you Want to Logout?",
-      onOk() {
-        localStorage.removeItem("token");
-        router.push("/auth/login");
-      },
-      onCancel() {},
-      okButtonProps: { style: { textTransform: "uppercase" } },
-      cancelButtonProps: {
-        style: { textTransform: "uppercase", fontWeight: "600" },
-      },
-    });
-  };
+    const showConfirm = () => {
+        confirm({
+            title: 'Logout',
+            content: 'Do you Want to Logout?',
+            onOk() {
+                localStorage.removeItem('token');
+                router.push('/auth/login');
+            },
+            onCancel() {},
+            okButtonProps: { style: { textTransform: 'uppercase', } },
+            cancelButtonProps: {
+                style: { textTransform: 'uppercase', fontWeight: '600' },
+            },
+        });
+    };
 
     return (
         <div className={semidark ? 'dark' : ''}>
             <nav
-                className={`sidebar fixed top-0 bottom-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300 ${semidark ? 'text-white-dark' : ''}`}
+                className={`sidebar fixed bottom-0 top-0 z-50 h-full min-h-screen w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] transition-all duration-300 ${semidark ? 'text-white-dark' : ''}`}
             >
-                <div className="h-full bg-white dark:bg-black">
-                    <div className="flex items-center justify-between px-4 py-3">
-                    <div className="logo-cover">
-            <img
-              src={Logo.src}
-              alt="logo"
-              className="logo-mobile"
-            />
-          </div>
-              
-
-                        <button
-                            type="button"
-                            className="collapse-icon flex h-8 w-8 items-center rounded-full transition duration-300 hover:bg-gray-500/10 rtl:rotate-180 dark:text-white-light dark:hover:bg-dark-light/10"
-                            onClick={() => dispatch(toggleSidebar())}
-                        >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="m-auto h-5 w-5">
-                                <path d="M13 19L7 12L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
+                <div className="h-full dark:bg-black" style={{ backgroundColor: 'white' }}>
+                    <div className="flex items-center justify-center px-4 py-3">
+                        <div className="logo-cover">
+                            <img src={Logo.src} alt="logo" />
+                        </div>
                     </div>
 
-                   
-                    <PerfectScrollbar className="relative h-[calc(100vh-80px)]">
+                    <PerfectScrollbar className="relative " style={{ height: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
                         <ul className="relative space-y-0.5 p-4 py-0 font-semibold">
-
                             <li className="nav-item">
                                 <ul>
-                                <li className={`mb-[7px] ${isActive("/") ? "active" : ""}`}>
-                    <Link href="/">Home</Link>
-                  </li>
-                  <li
-                    className={`mb-[7px] ${
-                      isActive("/chit/add-chit") ? "active" : ""
-                    }`}
-                  >
-                    <Link href="/chit/add-chit">Add Chit</Link>
-                  </li>
-                  <li
-                    className={`mb-[7px] ${
-                      isActive("/chit/chit-details") ? "active" : ""
-                    }`}
-                  >
-                    <Link href="/chit/chit-details">Chit Details</Link>
-                  </li>
-                  <li
-                    className={`mb-[7px] ${
-                      isActive("/chit/payment-history") ? "active" : ""
-                    }`}
-                  >
-                    <Link href="/chit/payment-history">Payment History</Link>
-                  </li>
-                  {/* 
-        <li className={`mb-[7px] ${isActive('/my-profile') ? 'active' : ''}`}>
-          <Link to="/my-profile">My Profile</Link>
-        </li>
-      */}
-                  <li className="mb-[7px]" onClick={showConfirm}>
-                    <Link href="">Logout</Link>
-                  </li>
+                                    <li className={`mb-3 ${isActive('/') ? 'active' : ''}`}>
+                                        <Link href="/">Home</Link>
+                                    </li>
+                                    <li className={`mb-3  ${isActive('/chit/add-chit') ? 'active' : ''}`}>
+                                        <Link href="/chit/add-chit">Add Chit</Link>
+                                    </li>
+                                    <li className={`mb-3  ${isActive('/chit/chit-details') ? 'active' : ''}`}>
+                                        <Link href="/chit/chit-details">Chit Details</Link>
+                                    </li>
+                                    <li className={`mb-3  ${isActive('/chit/payment-history') ? 'active' : ''}`}>
+                                        <Link href="/chit/payment-history">Payment History</Link>
+                                    </li>
+
+                                    <li className="mb-3 " onClick={showConfirm}>
+                                        <Link href="">Logout</Link>
+                                    </li>
                                 </ul>
                             </li>
-
                         </ul>
-
-                        
-                        {/* <div>
-                Copyright © {new Date().getFullYear()} Sree Thangam Jewellery.
-                Concept by{" "}
-                <Link href="https://irepute.in/" target="blank">
-                  repute.
-                </Link>
-              </div> */}
                     </PerfectScrollbar>
+                    <div className="socialmedia-outer">
+                        <div className="social float-left mb-[5px] w-full">
+                            <ul style={{ display: 'flex', justifyContent: 'center' }}>
+                                <li className="social-icons">
+                                    <a className="text-[#333]" target="_blank" href="https://www.facebook.com/sreethangamjewellry">
+                                        <img className="svg" src={FacebookImage.src} alt="image" style={{ width: '20px' }} />
+                                    </a>
+                                </li>
 
+                                <li className="social-icons">
+                                    <a className="text-[#333]" target="_blank" href="https://www.instagram.com/sree_thangam_jewellery/">
+                                        <img className="svg" src={TwitterImage.src} alt="image" style={{ width: '20px' }} />
+                                    </a>
+                                </li>
+                                <li className="social-icons">
+                                    <a className="text-[#333]" target="_blank" href="https://www.instagram.com/sree_thangam_jewellery/">
+                                        <img className="svg" src={InstagramImage.src} alt="image" style={{ width: '20px' }} />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="copyright float-left w-full">
+                            Copyright © {new Date().getFullYear()} Sree <br />
+                            Thangam Jewellery.
+                            <br /> Concept by 
+                            <Link href="https://irepute.in/" target="blank" style={{paddingLeft: '5px'}}>
+                                 repute.
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-               
             </nav>
-           
         </div>
     );
 };
