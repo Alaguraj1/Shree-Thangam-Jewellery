@@ -2072,6 +2072,20 @@ color: white;
     background: #ffe6e6;
 }
 
+:where(.css-dev-only-do-not-override-1ae8k9u).ant-select-outlined.ant-select-status-error:not(.ant-select-customize-input) .ant-select-selector {
+    border-bottom: 1px solid #a84647;
+    background:none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+:where(.css-1ae8k9u).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled):focus, :where(.css-dev-only-do-not-override-1ae8k9u).ant-input-outlined.ant-input-status-error:not(.ant-input-disabled):focus-within {
+    border-color: #a84647;
+    box-shadow: 0 ;
+    outline: 0;
+}
+
 /* local server end */
 
 

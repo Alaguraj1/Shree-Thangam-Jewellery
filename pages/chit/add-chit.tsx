@@ -168,15 +168,12 @@ const ChitDetails = () => {
         setState({ selectedAmount: value });
     };
 
-
-
-
     const host = 'https://schemes.sreethangamjewellery.com';
 
     const onFinish = (values: any) => {
         const completeMobileNumber = `${state.localCode}`;
 
-const Amount = state.selectedAmount
+        const Amount = state.selectedAmount;
 
         const body = {
             customer_name: values.customer_name,
@@ -192,54 +189,44 @@ const Amount = state.selectedAmount
             referenceUser: values.referenceUser,
         };
 
-       console.log("body", body) 
+        console.log('body', body);
 
+        //    payment integeration
+        let paymentData = {
+            merchant_id: '315511', // Merchant ID (Required)
+            order_id: 'ORD123', // Order ID - It can be generated from our project
+            amount: Amount, // Payment Amount (Required)
+            currency: 'INR', // Payment Currency Type (Required)
+            billing_email: values.email, // Billing Email (Optional)
+            billing_name: values.customer_name, // Billing Name (Optional)
+            billing_address: `${values.landMark}, ${values.address}`,
+            billing_city: values.city, // Billing City (Optional)
+            billing_state: 'Tamilnadu', // Billing State (Optional)
+            billing_zip: values.pin_code, // Billing Zip (Optional)
+            billing_country: 'India', // Billing COuntry (Optional)
+            redirect_url: `http://shopat.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
+            cancel_url: `https://schemes.sreethangamjewellery.com/`, // Failed/Cancel Payment URL (Required)
+            // merchant_param1: "Extra Information", // Extra Information (Optional)
+            // merchant_param2: "Extra Information", // Extra Information (Optional)
+            // merchant_param3: "Extra Information", // Extra Information (Optional)
+            // merchant_param4: "Extra Information", // Extra Information (Optional)
+            // language: 'EN', // Language (Optional)
+            billing_tel: completeMobileNumber, // Billing Mobile Number (Optional)
+        };
 
+        let encReq = CCAvenue.getEncryptedOrder(paymentData);
+        let accessCode = 'AVEV05LC59AW38VEWA';
+        let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
 
-
-
-    //    payment integeration
-    let paymentData = {
-        merchant_id: '315511', // Merchant ID (Required)
-        order_id: 'ORD123', // Order ID - It can be generated from our project
-        amount: Amount, // Payment Amount (Required)
-        currency: 'INR', // Payment Currency Type (Required)
-        billing_email: values.email, // Billing Email (Optional)
-        billing_name: values.customer_name, // Billing Name (Optional)
-        billing_address: `${values.landMark}, ${values.address}`,        
-        billing_city: values.city, // Billing City (Optional)
-        billing_state: 'Tamilnadu', // Billing State (Optional)
-        billing_zip: values.pin_code, // Billing Zip (Optional)
-        billing_country: 'India', // Billing COuntry (Optional)
-        redirect_url: `http://shopat.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
-        cancel_url: `https://schemes.sreethangamjewellery.com/`, // Failed/Cancel Payment URL (Required)
-        // merchant_param1: "Extra Information", // Extra Information (Optional)
-        // merchant_param2: "Extra Information", // Extra Information (Optional)
-        // merchant_param3: "Extra Information", // Extra Information (Optional)
-        // merchant_param4: "Extra Information", // Extra Information (Optional)
-        // language: 'EN', // Language (Optional)
-        billing_tel: completeMobileNumber // Billing Mobile Number (Optional)
+        if (Amount == undefined || Amount == null || Amount == '' || Amount == 0) {
+            messageApi.open({
+                type: 'error',
+                content: 'Select Chit Amount',
+            });
+        } else {
+            Router.push(URL);
+        }
     };
-
-    let encReq = CCAvenue.getEncryptedOrder(paymentData);
-    let accessCode = 'AVEV05LC59AW38VEWA';
-    let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
-
-    if (Amount == undefined || Amount == null || Amount == '' || Amount == 0) {
-        messageApi.open({
-            type: 'error',
-            content: 'Select Chit Amount',
-        });
-    } else {
-        Router.push(URL);
-    }
-
-    };
-
-
-   
-
-  
 
     const onFinishFailed = (errorInfo: any) => {};
 
@@ -264,10 +251,12 @@ const Amount = state.selectedAmount
         <>
             {contextHolder}
             <div className="add-chit-container">
-                <div className='add-chit-main'>
+                <div className="add-chit-main">
                     <div>
                         <div>
-                            <h6 className="chit-details-subTitle" style={{color: "#a84647", fontWeight:"700"}}>Personal Details</h6>
+                            <h6 className="chit-details-subTitle" style={{ color: '#a84647', fontWeight: '700' }}>
+                                Personal Details
+                            </h6>
                             <Form
                                 name="basic"
                                 form={form}
@@ -284,7 +273,7 @@ const Amount = state.selectedAmount
                                     className="add-chit-inputs"
                                     rules={[
                                         {
-                                            required: false,
+                                            required: true,
                                             message: 'Customer Name field is required.',
                                         },
                                     ]}
@@ -298,7 +287,7 @@ const Amount = state.selectedAmount
                                     className="add-chit-inputs"
                                     rules={[
                                         {
-                                            required: false,
+                                            required: true,
                                             message: 'Address field is required.',
                                         },
                                     ]}
@@ -312,7 +301,7 @@ const Amount = state.selectedAmount
                                     className="add-chit-inputs"
                                     rules={[
                                         {
-                                            required: false,
+                                            required: true,
                                             message: 'landmark field is required.',
                                         },
                                     ]}
@@ -339,17 +328,18 @@ const Amount = state.selectedAmount
                                     label="Mobile Number"
                                     name="mobile_number"
                                     className="add-chit-inputs"
-                                    rules={[
-                                        {
-                                            required: false,
-                                            message: 'Mobile Number field is required.',
-                                        },
-                                    ]}
+                                   
                                 >
                                     <Input prefix={state.localCode} disabled className="chit-input-style" />
                                 </Form.Item>
 
-                                <Form.Item label="Select City" name="city" className="add-chit-inputs">
+                                <Form.Item label="Select City" name="city" className="add-chit-inputs"
+                                 rules={[
+                                    {
+                                        required: true,
+                                        message: 'City field is required.',
+                                    },
+                                ]}>
                                     <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleCityChange}>
                                         {state?.city?.map((val: any) => (
                                             <Option key={val?.CITYCODE} value={val?.CITYCODE}>
@@ -365,16 +355,25 @@ const Amount = state.selectedAmount
                                     className="add-chit-inputs"
                                     rules={[
                                         {
-                                            required: false,
-                                            message: 'Address field is required.',
+                                            required: true,
+                                            message: 'pincode field is required.',
                                         },
                                     ]}
                                 >
                                     <Input type="number" className="chit-input-style" />
                                 </Form.Item>
 
-                                <h6 className="chit-details-subTitle" style={{marginTop:" 50px", color: "#a84647", fontWeight:"700"}}>Chit</h6>
-                                <Form.Item label="Select Branch" name="branch" className="add-chit-inputs">
+                                <h6 className="chit-details-subTitle" style={{ marginTop: ' 50px', color: '#a84647', fontWeight: '700' }}>
+                                    Chit
+                                </h6>
+                                <Form.Item label="Select Branch" name="branch" className="add-chit-inputs"
+                                 rules={[
+                                    {
+                                        required: true,
+                                        message: 'branch field is required.',
+                                    },
+                                ]}
+                                >
                                     <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0} onChange={handleBranchChange}>
                                         {state?.branch[0]?.Message?.map((val: any) => (
                                             <Option key={val?.BRNCODE} value={val?.BRNCODE}>
@@ -384,8 +383,19 @@ const Amount = state.selectedAmount
                                     </Select>
                                 </Form.Item>
 
-                                <Form.Item label="Chit Name" name="chit_name" className="add-chit-inputs">
-                                    <Select onChange={handleChitChange} className="add-chit-inputs" showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}  >
+                                <Form.Item label="Chit Name" name="chit_name" className="add-chit-inputs"
+                                 rules={[
+                                    {
+                                        required: true,
+                                        message: 'Chit Name field is required.',
+                                    },
+                                ]}>
+                                    <Select
+                                        onChange={handleChitChange}
+                                        className="add-chit-inputs"
+                                        showSearch
+                                        filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                    >
                                         {state?.chit?.map((val: any) => (
                                             <Option key={val?.CHTCODE} value={val?.CHTCODE}>
                                                 {val?.CHTNAME}
@@ -393,26 +403,43 @@ const Amount = state.selectedAmount
                                         ))}
                                     </Select>
                                 </Form.Item>
+                                <Form.Item
+    label="Amount"
+    name="amount"
+    className="add-chit-inputs"
+    required={true}
+    rules={[
+        {
+            required:true,
+            message: state?.selectedChit === 6 ? 'Minimum amount is Rs 50,000' : 'Value is required',
+        },
+        {
+            validator: (rule, value) => {
+                if (state?.selectedChit === 6 && (value < 50000 || isNaN(value))) {
+                    return Promise.reject('Minimum amount is Rs 50,000');
+                }
+                return Promise.resolve();
+            }
+        }
+    ]}
+>
+    {state?.selectedChit === 6 ? (
+        <>
+            <Input type="number" className="chit-input-style"/>
+    </>
+    ) : (
+        <>
+            <Select onChange={handleAmountChange} className="add-chit-inputs"  showSearch filterOption={(input: any, option: any) => option.children.indexOf(input) >= 0}>
+                {state?.getChit?.map((val: any) => (
+                    <Option key={val?.CHTAMNT} value={val?.CHTAMNT}>
+                        {val?.CHTAMNT}
+                    </Option>
+                ))}
+            </Select>
+        </>
+    )}
+</Form.Item>
 
-                                <Form.Item label="Amount" name="amount" className="add-chit-inputs">
-                                    {state?.selectedChit == 6 ? (
-                                        <>
-                                            <Input type="number" />
-                                            <p>Min amount is Rs 50,000/-</p>
-                                        </>
-                                    ) : (
-                                        <>
-                                            {' '}
-                                            <Select onChange={handleAmountChange} showSearch filterOption={(input: any, option: any) => option.children.indexOf(input) >= 0}>
-                                                {state?.getChit?.map((val: any) => (
-                                                    <Option key={val?.CHTAMNT} value={val?.CHTAMNT}>
-                                                        {val?.CHTAMNT}
-                                                    </Option>
-                                                ))}
-                                            </Select>{' '}
-                                        </>
-                                    )}
-                                </Form.Item>
 
                                 {/* <p style={{ fontSize: "14px" }}>
                       *NOTE you can purchase from the selected branch
@@ -437,8 +464,14 @@ const Amount = state.selectedAmount
                                     label="Reference User (Optional)"
                                     name="referenceUser"
                                     // style={{ width: "400px" }}
-                                    labelCol={{ span: 14 }}
-                                    wrapperCol={{ span: 18 }}
+                                    labelCol={{ span: 12 }}
+                                    wrapperCol={{ span: 20 }}
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Reference User field is required.',
+                                        },
+                                    ]}
                                 >
                                     <Select showSearch filterOption={(input: any, option: any) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
                                         {state?.ReferenseUser?.map((val: any) => (
@@ -478,14 +511,7 @@ const Amount = state.selectedAmount
             </div>
 
             {/* terms and conditions */}
-            <Modal
-                visible={state.isModalVisible}
-                onOk={handleModalAccept}
-                okText="Accept"
-                onCancel={handleModalCancel}
-                width={700}
-                footer={false}
-            >
+            <Modal visible={state.isModalVisible} onOk={handleModalAccept} okText="Accept" onCancel={handleModalCancel} width={700} footer={false}>
                 {state.selectedChit == 4 ? (
                     <>
                         <div style={{ marginTop: '30px' }}>
