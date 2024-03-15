@@ -8,6 +8,7 @@ import Models from '../../imports/models.import';
 import NewChitImage from '../../public/assets/images/stj/newChit.png';
 import SwarnaLakshitha from '../../public/assets/images/stj/terms_swarna-laksita.png';
 import GoldVikasham from '../../public/assets/images/stj/terms-goldvirksham.png';
+import CCAvenue from '../../utils/ccavenue.utils';
 
 const { Option } = Select;
 
@@ -167,8 +168,15 @@ const ChitDetails = () => {
         setState({ selectedAmount: value });
     };
 
+
+
+
+    const host = 'https://schemes.sreethangamjewellery.com';
+
     const onFinish = (values: any) => {
         const completeMobileNumber = `${state.localCode}`;
+
+const Amount = state.selectedAmount
 
         const body = {
             customer_name: values.customer_name,
@@ -180,10 +188,58 @@ const ChitDetails = () => {
             pin_code: values.pin_code,
             branch: values.branch,
             chit_name: values.chit_name,
-            amount: values.amount,
+            amount: Amount,
             referenceUser: values.referenceUser,
         };
+
+       console.log("body", body) 
+
+
+
+
+
+    //    payment integeration
+    let paymentData = {
+        merchant_id: '315511', // Merchant ID (Required)
+        order_id: 'ORD123', // Order ID - It can be generated from our project
+        amount: Amount, // Payment Amount (Required)
+        currency: 'INR', // Payment Currency Type (Required)
+        billing_email: values.email, // Billing Email (Optional)
+        billing_name: values.customer_name, // Billing Name (Optional)
+        billing_address: `${values.landMark}, ${values.address}`,        
+        billing_city: values.city, // Billing City (Optional)
+        billing_state: 'Tamilnadu', // Billing State (Optional)
+        billing_zip: values.pin_code, // Billing Zip (Optional)
+        billing_country: 'India', // Billing COuntry (Optional)
+        redirect_url: `http://shopat.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
+        cancel_url: `https://schemes.sreethangamjewellery.com/`, // Failed/Cancel Payment URL (Required)
+        // merchant_param1: "Extra Information", // Extra Information (Optional)
+        // merchant_param2: "Extra Information", // Extra Information (Optional)
+        // merchant_param3: "Extra Information", // Extra Information (Optional)
+        // merchant_param4: "Extra Information", // Extra Information (Optional)
+        // language: 'EN', // Language (Optional)
+        billing_tel: completeMobileNumber // Billing Mobile Number (Optional)
     };
+
+    let encReq = CCAvenue.getEncryptedOrder(paymentData);
+    let accessCode = 'AVEV05LC59AW38VEWA';
+    let URL = `https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction&merchant_id=${paymentData.merchant_id}6&encRequest=${encReq}&access_code=${accessCode}`;
+
+    if (Amount == undefined || Amount == null || Amount == '' || Amount == 0) {
+        messageApi.open({
+            type: 'error',
+            content: 'Select Chit Amount',
+        });
+    } else {
+        Router.push(URL);
+    }
+
+    };
+
+
+   
+
+  
 
     const onFinishFailed = (errorInfo: any) => {};
 
