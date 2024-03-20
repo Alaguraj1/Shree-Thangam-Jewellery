@@ -204,7 +204,7 @@ const ChitDetails = () => {
             billing_state: 'Tamilnadu', // Billing State (Optional)
             billing_zip: values.pin_code, // Billing Zip (Optional)
             billing_country: 'India', // Billing COuntry (Optional)
-            redirect_url: `http://shopat.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
+            redirect_url: `https://schemes.sreethangamjewellery.com/ccavResponseHandler.php`, // Success URL (Required)
             cancel_url: `https://schemes.sreethangamjewellery.com/`, // Failed/Cancel Payment URL (Required)
             // merchant_param1: "Extra Information", // Extra Information (Optional)
             // merchant_param2: "Extra Information", // Extra Information (Optional)
